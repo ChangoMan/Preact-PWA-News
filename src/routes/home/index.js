@@ -56,13 +56,15 @@ export default class Home extends Component {
 		} else {
 		  return (
 			<div className={style.home}>
-				<header className="site-header">
-					<select value={this.state.selectedSource} onChange={(e) => {this.updateNews(e.target.value)}}>
-						{this.state.sources.map((source) => {
-						return <option value={source.id} key={source.id}>{source.name}</option>
-						})}
-					</select>
-				</header>
+				<div className="site-header">
+					<div className="select">
+						<select value={this.state.selectedSource} onChange={(e) => {this.updateNews(e.target.value)}}>
+							{this.state.sources.map((source) => {
+							return <option value={source.id} key={source.id}>{source.name}</option>
+							})}
+						</select>
+					</div>
+				</div>
 
 			  <main>
 				{articles.map((article, index) => (
