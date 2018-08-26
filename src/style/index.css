@@ -1,0 +1,38 @@
+html, body {
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	background: #FAFAFA;
+	font-family: 'Helvetica Neue', arial, sans-serif;
+	font-weight: 400;
+	color: #444;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+#app {
+	height: 100%;
+}
+
+main {
+	display: grid;
+	grid-gap: 30px;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-auto-rows: max-content;
+	grid-auto-flow: row dense;
+}
+
+.article a,
+.article a:visited {
+	text-decoration: none;
+	color: inherit;
+}
+
+.article img {
+	width: 100%;
+}
