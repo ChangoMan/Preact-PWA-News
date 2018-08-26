@@ -1,6 +1,6 @@
 {
-  "name": "preact-sw-magic",
-  "short_name": "preact-sw-magic",
+  "name": "Preact News",
+  "short_name": "Preact News",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
