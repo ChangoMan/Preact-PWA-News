@@ -20,8 +20,22 @@ export default class Home extends Component {
 		this.updateSources();
 	}
 
-	updateNews = (source) => {
-    fetch(`https://newsapi.org/v2/top-headlines?sources=${source}&apiKey=${apiKey}`)
+	updateNews = async(source = this.state.selectedSource) => {
+		try {
+      const res = await fetch(`https://newsapi.org/v2/top-headlines?sources=${source}&apiKey=${apiKey}`);
+      const json = await res.json();
+
+      this.setState(() => ({
+        isLoaded: true,
+        articles: json.articles,
+        selectedSource: source
+      }));
+
+    } catch (error) {
+      this.setState(() => ({error}))
+		}
+
+    /* fetch(`https://newsapi.org/v2/top-headlines?sources=${source}&apiKey=${apiKey}`)
     .then(res => res.json())
     .then((result) => {
       this.setState(() => ({
@@ -31,12 +45,25 @@ export default class Home extends Component {
       }));
     }, (error) => {
       this.setState(() => ({error}))
-    })
+		}) */
+
   }
 
-	updateSources = () => {
+	updateSources = async() => {
 
-    fetch(`https://newsapi.org/v2/sources?apiKey=${apiKey}`)
+		try {
+      const res = await fetch(`https://newsapi.org/v2/sources?apiKey=${apiKey}`);
+      const json = await res.json();
+
+      this.setState(() => ({
+        sources: json.sources
+      }));
+
+    } catch (error) {
+      this.setState(() => ({error}))
+    }
+
+    /* fetch(`https://newsapi.org/v2/sources?apiKey=${apiKey}`)
     .then(res => res.json())
     .then((result) => {
       this.setState(() => ({
@@ -44,7 +71,7 @@ export default class Home extends Component {
       }));
     }, (error) => {
       this.setState(() => ({error}))
-    })
+    }) */
   }
 
 	render() {

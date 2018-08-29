@@ -1,6 +1,7 @@
 workbox.precaching.precacheAndRoute(self.__precacheManifest || []);
 
 workbox.routing.registerRoute(/(?:https:\/\/.*)/, workbox.strategies.networkFirst());
+// workbox.routing.registerRoute(/(?:https:\/\/newsapi.org\/.*)/, workbox.strategies.networkFirst());
 
 workbox.routing.registerRoute(
     // Cache image files
