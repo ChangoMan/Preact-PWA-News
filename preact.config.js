@@ -1,4 +1,4 @@
-const WorkboxPlugin = require('workbox-webpack-plugin');
+import WorkboxPlugin from 'workbox-webpack-plugin';
 import asyncPlugin from 'preact-cli-plugin-fast-async';
 
 export default config => {
@@ -9,8 +9,6 @@ export default config => {
       include: [/\.html$/, /\.js$/, /\.svg$/, /\.css$/, /\.png$/, /\.ico$/]
     })
   );
-
   asyncPlugin(config);
-
   return config;
 };

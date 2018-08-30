@@ -34,23 +34,9 @@ export default class Home extends Component {
     } catch (error) {
       this.setState(() => ({error}))
 		}
-
-    /* fetch(`https://newsapi.org/v2/top-headlines?sources=${source}&apiKey=${apiKey}`)
-    .then(res => res.json())
-    .then((result) => {
-      this.setState(() => ({
-        isLoaded: true,
-        articles: result.articles,
-        selectedSource: source
-      }));
-    }, (error) => {
-      this.setState(() => ({error}))
-		}) */
-
   }
 
 	updateSources = async() => {
-
 		try {
       const res = await fetch(`https://newsapi.org/v2/sources?apiKey=${apiKey}`);
       const json = await res.json();
@@ -62,22 +48,12 @@ export default class Home extends Component {
     } catch (error) {
       this.setState(() => ({error}))
     }
-
-    /* fetch(`https://newsapi.org/v2/sources?apiKey=${apiKey}`)
-    .then(res => res.json())
-    .then((result) => {
-      this.setState(() => ({
-        sources: result.sources
-      }));
-    }, (error) => {
-      this.setState(() => ({error}))
-    }) */
   }
 
 	render() {
 		const { error, isLoaded, articles } = this.state;
 		if (error) {
-		  return <div>Error: {error.message}</div>;
+		  return <div className="error"><div className="alert alert--error">Error: {error.message}</div></div>;
 		} else if (!isLoaded) {
 		  return <div>Loading...</div>;
 		} else {
@@ -94,13 +70,13 @@ export default class Home extends Component {
 				</div>
 
 			  <main>
-				{articles.map((article, index) => (
-				  <div className="article" key={index}>
-					<h2><a href={article.url}>{article.title}</a></h2>
-					<img src={article.urlToImage} alt="" />
-					<p>{article.description}</p>
-				  </div>
-				))}
+					{articles.map((article, index) => (
+						<div className="article" key={index}>
+						<h2><a href={article.url}>{article.title}</a></h2>
+						<img src={article.urlToImage} alt="" />
+						<p>{article.description}</p>
+						</div>
+					))}
 			  </main>
 			</div>
 		  );
